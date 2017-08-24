@@ -1,0 +1,90 @@
+
+`include "timescale.v"
+
+
+module fb_rxstatem (MRxClk, Reset, MRxDV,  MRxDEqDataSoC, MRxDEq5, 
+                StateData, StateIdle, StatePreamble, StateFFS, StartIdle
+                    );
+
+input         MRxClk;
+input         Reset;
+input         MRxDV;
+
+input         MRxDEq5;
+input         MRxDEqDataSoC;
+
+output        StateIdle;
+output        StateFFS;
+output        StatePreamble;
+output        StateData;
+output        StartIdle;
+
+reg           StateIdle;
+reg           StateFFS;
+reg           StatePreamble;
+reg   [1:0]   StateData;
+
+wire          StartIdle;
+wire          StartFFS;
+wire          StartPreamble;
+wire  [1:0]   StartData;
+
+
+// Defining the next state
+assign StartIdle = ~MRxDV & ( StatePreamble | StateFFS | (|StateData));
+
+assign StartFFS = MRxDV & ~MRxDEq5 & StateIdle;
+
+assign StartPreamble = MRxDV & MRxDEq5 & (StateIdle | StateFFS);
+
+assign StartData[0] = MRxDV & (StatePreamble & MRxDEqDataSoC | StateData[1]);
+
+assign StartData[1] = MRxDV & StateData[0] ;
+/*assign StartDrop = MRxDV & (StateIdle & Transmitting | StateSFD & ~IFGCounterEq24 &
+                   MRxDEqD |  StateData0 &  ByteCntMaxFrame);*/
+
+// Rx State Machine
+always @ (posedge MRxClk or posedge Reset)
+begin
+  if(Reset)
+    begin
+      StateIdle     <=  1'b1;
+      StatePreamble <=  1'b0;
+      StateFFS      <=  1'b0;
+      StateData     <=  2'b0;
+    end
+  else
+    begin
+      if(StartPreamble | StartFFS)
+        StateIdle <=  1'b0;
+      else
+      if(StartIdle)
+        StateIdle <=  1'b1;
+
+      if(StartData[0] | StartIdle)
+        StatePreamble <=  1'b0;
+      else
+      if(StartPreamble)
+        StatePreamble <=  1'b1;
+
+      if(StartPreamble | StartIdle)
+        StateFFS <=  1'b0;
+      else
+      if(StartFFS)
+        StateFFS <=  1'b1;
+
+      if(StartIdle | StartData[1])
+        StateData[0] <=  1'b0;
+      else
+      if(StartData[0])
+        StateData[0] <=  1'b1;
+		
+	  if(StartIdle | StartData[0])
+        StateData[1] <=  1'b0;
+      else
+      if(StartData[1])
+        StateData[1] <=  1'b1;
+    end
+end
+
+endmodule

@@ -1,0 +1,14 @@
+Partition Merge Status : Successful - Thu Jul 20 17:01:39 2017
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+Revision Name : pyhctrl
+Top-level Entity Name : pyhctrl
+Family : Cyclone IV E
+Total logic elements : 1,055
+    Total combinational functions : 955
+    Dedicated logic registers : 370
+Total registers : 370
+Total pins : 147
+Total virtual pins : 0
+Total memory bits : 2,560
+Embedded Multiplier 9-bit elements : 6
+Total PLLs : 1

@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at phyInitial.v(16): object "busy" differs only in case from object "Busy" in the same scope File: C:/altera/16.0/myProjects/PHYctrl_100Mbps/phyInitial.v Line: 16

@@ -1,0 +1,138 @@
+
+`include "timescale.v"
+
+
+module fb_rxmac     (MRxClk, MRxDV, MRxD, Reset, 
+					 RxData, RxValid, RxStartFrm, RxEndFrm,
+                     CrcError, StateIdle, StatePreamble, StateFFS, StateData
+                    );
+
+input         MRxClk;
+input         MRxDV;
+input   [3:0] MRxD;
+input         Reset;
+
+output  [4:0] RxData;
+output        RxValid;
+output        RxStartFrm;
+output        RxEndFrm;
+
+output        CrcError;
+
+output        StateIdle;
+output        StatePreamble;
+output        StateFFS;
+output        StateData;
+
+reg     [3:0] RxData;
+reg           RxValid;
+
+reg     [3:0] LatchedByte;
+reg           GenerateRxValid_q;
+
+wire          MRxDEqDataSoC;
+wire          MRxDEq5;
+wire          StartIdle;
+wire    [7:0] Crc;
+wire          Enable_Crc;
+wire          Initialize_Crc;
+wire    [3:0] Data_Crc;
+
+wire          GenerateRxValid;
+
+assign MRxDEq5 = MRxD == 4'h5;
+assign MRxDEqDataSoC = MRxD == 4'h7;
+/*
+//Latch the byte no matter what
+always @ (posedge MRxClk or posedge Reset)
+begin
+  if(Reset)
+    begin
+      LatchedByte   <=  4'h0;
+    end
+  else
+    begin
+      LatchedByte   <=  MRxD;
+    end
+end
+*/
+// Rx State Machine module
+eth_rxstatem rxstatem1
+  (.MRxClk(MRxClk),
+   .Reset(Reset),
+   .MRxDV(MRxDV),
+   .MRxDEqDataSoC(MRxDEqDataSoC),
+   .MRxDEq5(MRxDEq5),
+   .StateIdle(StateIdle),
+   .StateFFS(StateFFS),
+   .StatePreamble(StatePreamble),
+   .StateData(StateData),
+   .StartIdle(StartIdle)
+   );
+/*
+assign Enable_Crc = MRxDV & (|StateData & ~ByteCntMaxFrame);
+assign Initialize_Crc = StateSFD | DlyCrcEn & (|DlyCrcCnt[3:0]) &
+                        DlyCrcCnt[3:0] < 4'h9;
+
+assign Data_Crc[0] = MRxD[3];
+assign Data_Crc[1] = MRxD[2];
+assign Data_Crc[2] = MRxD[1];
+assign Data_Crc[3] = MRxD[0];
+
+
+// Connecting module Crc
+eth_crc crcrx
+  (.Clk(MRxClk),
+   .Reset(Reset),
+   .Data(Data_Crc),
+   .Enable(Enable_Crc),
+   .Initialize(Initialize_Crc), 
+   .Crc(Crc),
+   .CrcError(CrcError)
+   );
+*/
+
+// Output byte stream
+assign GenerateRxValid = StateData & ~StartIdle;
+always @ (posedge MRxClk or posedge Reset)
+begin
+  if(Reset)
+    begin
+     RxData[3:0]        <=  8'h0;
+    end
+  else
+    begin
+      if(GenerateRxValid)
+        // Data goes through only in data state 
+        RxData[3:0] <=  MRxD;       // Output data byte
+      else 
+	    RxData[3:0] <=  4'h0; 
+    end
+end
+
+always @ (posedge MRxClk or posedge Reset)
+begin
+  if(Reset)
+    begin
+      GenerateRxValid_q   <=  1'b0;
+    end
+  else
+    begin
+      GenerateRxValid_q   <=  GenerateRxValid;
+    end
+end
+
+always @ (posedge MRxClk or posedge Reset)
+begin
+  if(Reset)
+    begin
+      RxValid   <=  1'b0;
+    end
+  else
+    begin
+      RxValid   <=  GenerateRxValid ;
+    end
+end
+
+
+endmodule

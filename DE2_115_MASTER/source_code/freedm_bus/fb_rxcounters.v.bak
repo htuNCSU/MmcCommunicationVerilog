@@ -1,0 +1,52 @@
+
+`include "timescale.v"
+
+module fb_rxcounters 
+  (
+   MRxClk, Reset, MRxDV, StateIdle, StateFFD, StatePreamble, StateData, ByteCntEq0,
+   );
+
+input         MRxClk;
+input         Reset;
+input         MRxDV;
+input         StateIdle;
+input         StateFFD;
+input         StatePreamble;
+input [1:0]   StateData;
+
+output        ByteCntEq0;               // Byte counter = 0
+output [15:0] ByteCntOut;               // Byte counter
+
+wire          ResetByteCounter;
+wire          IncrementByteCounter;
+wire          ByteCntMax;
+
+reg   [15:0]  ByteCnt;
+
+
+
+assign ResetByteCounter =  StateIdle | StateFFD | MRxDV & StatePreamble & MRxDEqDataSoC;
+
+assign IncrementByteCounter = ~ResetByteCounter & MRxDV &( StateData[1] & ~ByteCntMax ) ;
+
+always @ (posedge MRxClk or posedge Reset)
+begin
+  if(Reset)
+    ByteCnt[15:0] <=  16'd0;
+  else
+    begin
+      if(ResetByteCounter)
+        ByteCnt[15:0] <=  16'd0;
+      else
+      if(IncrementByteCounter)
+        ByteCnt[15:0] <=  ByteCnt[15:0] + 16'd1;
+     end
+end
+
+
+assign ByteCntEq0       = ByteCnt == 16'd0;
+assign ByteCntMax       = ByteCnt == 16'hffff;
+
+
+
+endmodule

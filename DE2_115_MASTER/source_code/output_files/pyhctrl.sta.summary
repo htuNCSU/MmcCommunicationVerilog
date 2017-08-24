@@ -1,0 +1,125 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 7.329
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : 14.604
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'ENET1_RX_CLK'
+Slack : 33.698
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.275
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ENET1_RX_CLK'
+Slack : 0.362
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.432
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.699
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.548
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ENET1_RX_CLK'
+Slack : 19.503
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 36.000
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 7.568
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 14.997
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'ENET1_RX_CLK'
+Slack : 34.234
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.287
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ENET1_RX_CLK'
+Slack : 0.354
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.399
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.703
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.557
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ENET1_RX_CLK'
+Slack : 19.536
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 36.000
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 8.674
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 17.345
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'ENET1_RX_CLK'
+Slack : 36.854
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.093
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ENET1_RX_CLK'
+Slack : 0.152
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.191
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'delay_measure_clock_master|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.771
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.200
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ENET1_RX_CLK'
+Slack : 19.377
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 36.000
+TNS   : 0.000
+
+------------------------------------------------------------
