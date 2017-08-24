@@ -1,0 +1,319 @@
+Design Assistant report for PHYctrl_Slave
+Thu Jul 06 15:10:49 2017
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Design Assistant Settings
+  4. High Violations
+  5. Medium Violations
+  6. Information only Violations
+  7. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Thu Jul 06 15:10:49 2017 ;
+; Revision Name                     ; PHYctrl_Slave                       ;
+; Top-level Entity Name             ; PHYctrl_Slave                       ;
+; Family                            ; Cyclone IV E                        ;
+; Total Critical Violations         ; 0                                   ;
+; Total High Violations             ; 11                                  ;
+; - Rule S102                       ; 2                                   ;
+; - Rule D101                       ; 9                                   ;
+; Total Medium Violations           ; 3                                   ;
+; - Rule R102                       ; 2                                   ;
+; - Rule D102                       ; 1                                   ;
+; Total Information only Violations ; 54                                  ;
+; - Rule T101                       ; 4                                   ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Option                                                                                                                                                               ; Setting      ; To ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Design Assistant mode                                                                                                                                                ; Post-Fitting ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                        ; 25           ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                    ; 30           ;    ;
+; Minimum number of node fan-out                                                                                                                                       ; 30           ;    ;
+; Maximum number of nodes to report                                                                                                                                    ; 50           ;    ;
+; Rule C101: Gated clock should be implemented according to the Altera standard scheme                                                                                 ; On           ;    ;
+; Rule C102: Logic cell should not be used to generate an inverted clock signal                                                                                        ; On           ;    ;
+; Rule C103: Gated clock does not feed at least a pre-defined number of clock ports to effectively save power                                                          ; On           ;    ;
+; Rule C104: Clock signal source should drive only clock input ports                                                                                                   ; On           ;    ;
+; Rule C105: Clock signal should be a global signal                                                                                                                    ; On           ;    ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges                                                                         ; On           ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                         ; On           ;    ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                ; On           ;    ;
+; Rule R103: External reset signal should be correctly synchronized                                                                                                    ; On           ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and used in another clock domain should be correctly synchronized                                  ; On           ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and used in another clock domain should be synchronized                                            ; On           ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                     ; On           ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                             ; On           ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                             ; On           ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                           ; On           ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                    ; On           ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                         ; On           ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                           ; On           ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                         ; On           ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                      ; On           ;    ;
+; Rule A108: Design should not contain latches                                                                                                                         ; On           ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                             ; On           ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                ; On           ;    ;
+; Rule S103: More than one asynchronous port of a register should not be driven by the same signal source                                                              ; On           ;    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                                                                ; On           ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                        ; On           ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain ; On           ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                              ; On           ;    ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; High Violations                                                                                                                                                                                                                                                                                                   ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+; Rule name                                                                                                                                                                                                                ; Name                                                                                   ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                                                                    ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[1]    ;
+;  Synchronous and reset port source node(s) list                                                                                                                                                                          ; SW[8]                                                                                  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                                                                    ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[0]    ;
+;  Synchronous and reset port source node(s) list                                                                                                                                                                          ; SW[8]                                                                                  ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 1                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                                ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateIdle            ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[7] ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[6] ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[5] ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[3] ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[2] ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[1] ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[0] ;
+;  Destination node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]" ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[4] ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 2                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[4] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[4]                                            ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 3                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[0] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[0]                                            ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 4                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[1] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[1]                                            ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 5                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[2] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[2]                                            ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 6                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[3] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[3]                                            ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 7                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[5] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[5]                                            ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 8                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[6] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[6]                                            ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains - Structure 9                                                                                                              ;                                                                                        ;
+;  Source node(s) from clock "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]"      ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[7] ;
+;  Destination node(s) from clock "ENET1_RX_CLK"                                                                                                                                                                           ; fb_slave_mac:fb_slave_mac_ins|LogicDelay[7]                                            ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Medium Violations                                                                                                                                                                                                                                                              ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+; Rule name                                                                                                                                                                          ; Name                                                                                      ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                              ; SW[8]                                                                                     ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|RxData[7]                                                   ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateNumb               ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[2]  ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateIdle               ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[1]  ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[0]  ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[4]  ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[3]  ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[13] ;
+;  Reset signal destination node(s) list                                                                                                                                             ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[5]  ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                              ; SW[0]                                                                                     ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|Prsd[15]               ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[5]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[0]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[2]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[1]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[3]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[4]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[6]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Counter[7]             ;
+;  Reset signal destination node(s) list                                                                                                                                             ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Mdc                    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain - Structure 1 ;                                                                                           ;
+;  Source node(s) from clock "ENET1_RX_CLK" - (Bus)                                                                                                                                  ; fb_slave_mac:fb_slave_mac_ins|MTxD                                                        ;
+;  Synchronizer node(s) from clock "ENET0_TX_CLK" - (Bus)                                                                                                                            ; fb_slave_mac:fb_slave_mac_ins|MTxD_sync1                                                  ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                                                                                                                                                                                 ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Rule name                                                        ; Name                                                                                                                                                                                           ; Fan-Out ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateIdle                                                                                                                    ; 45      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ENET1_RX_CLK~inputclkctrl                                                                                                                                                                      ; 141     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ~GND                                                                                                                                                                                           ; 86      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; CLOCK_50~inputclkctrl                                                                                                                                                                          ; 188     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; CLOCK_50~inputclkctrl                                                                                                                                                                          ; 188     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ENET1_RX_CLK~inputclkctrl                                                                                                                                                                      ; 141     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ~GND                                                                                                                                                                                           ; 86      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateIdle                                                                                                                    ; 45      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt~18                                                                                                         ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|InProgress                                                                                                                                      ; 21      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|InProgress                                                                                                                                      ; 21      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn                                                                                                                       ; 20      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn                                                                                                                       ; 20      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyIniCommand1:pyhIniCommands1|ram~3                                                                                                                                                           ; 19      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyIniCommand0:pyhIniCommands|ram~3                                                                                                                                                            ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn_n                                                                                                                     ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[2]~23                                                                                                    ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn_n                                                                                                                     ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveCrc                                                                                                                ; 15      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|ResetRxRamAddr                                                                                                           ; 14      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|WriteOp                                                                                                                                         ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|WriteOp                                                                                                                                         ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateFrmCrc                                                                                                                  ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|GenerateRxValid~7                                                                                                                                                ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|SlaveID[3]~0                                                                                                                                                     ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[1]                                                                                                            ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ENET0_TX_CLK~inputclkctrl                                                                                                                                                                      ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|BitCounter[4]                                                                                                                                   ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateNumb                                                                                                                    ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|BitCounter[4]                                                                                                                                   ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[0]                                                                                                            ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|BitCounter[3]                                                                                                                                   ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Equal0~0                                                                                                                    ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Equal0~1                                                                                                                    ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateData                                                                                                                    ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Equal0~1                                                                                                                    ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Equal0~0                                                                                                                    ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|BitCounter[3]                                                                                                                                   ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|Prsd[0]~0                                                                                                                   ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|ShiftReg[3]~7                                                                                                               ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|Prsd[8]~1                                                                                                                   ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|ShiftReg[1]~2                                                                                                               ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|RxData[7]~10                                                                                                                                                     ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StatePreamble                                                                                                                ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|ResetLogicDelayCnt                                                                                                       ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|pll_25to100MHz:delay_measure_clock|altpll:altpll_component|pll_25to100MHz_altpll:auto_generated|wire_pll1_clk[0]~clkctrl ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateDist                                                                                                                    ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|Prsd[8]~1                                                                                                                   ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|Prsd[0]~0                                                                                                                   ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|ShiftReg[3]~7                                                                                                               ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_shiftreg:shftrg|ShiftReg[1]~2                                                                                                               ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; fb_slave_mac:fb_slave_mac_ins|always7~0                                                                                                                                                        ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; readDataRam[12]~0                                                                                                                                                                              ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; phyInital:phyInital_ins1|eth_miim:eth_miim_ins|Busy~0                                                                                                                                          ; 7       ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Design Assistant
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+    Info: Processing started: Thu Jul 06 15:10:48 2017
+Info: Command: quartus_drc --read_settings_files=on --write_settings_files=off PHYctrl_Slave -c PHYctrl_Slave
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (332104): Reading SDC File: 'phy.sdc'
+Info (332110): Deriving PLL clocks
+    Info (332110): create_generated_clock -source {fb_slave_mac_ins|fb_slave_counters_ins|delay_measure_clock|altpll_component|auto_generated|pll1|inclk[0]} -multiply_by 4 -duty_cycle 50.00 -name {fb_slave_mac_ins|fb_slave_counters_ins|delay_measure_clock|altpll_component|auto_generated|pll1|clk[0]} {fb_slave_mac_ins|fb_slave_counters_ins|delay_measure_clock|altpll_component|auto_generated|pll1|clk[0]}
+Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
+Warning (332060): Node: ENET0_TX_CLK was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register fb_slave_mac:fb_slave_mac_ins|MTxD_sync2[1] is being clocked by ENET0_TX_CLK
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (308074): (High) Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source. Found 2 node(s) related to this rule.
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[1]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 104
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[0]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 104
+Critical Warning (308060): (High) Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains. (Value defined:2). Found 9 asynchronous clock domain interface structure(s) related to this rule.
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateIdle" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 28
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[4]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[0]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[1]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[2]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[3]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[5]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[6]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+    Critical Warning (308012): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt[7]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 72
+Warning (308023): (Medium) Rule R102: External reset signals should be synchronized using two cascaded registers. Found 2 node(s) related to this rule.
+    Warning (308010): Node  "SW[8]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/PHYctrl_Slave.v Line: 8
+    Warning (308010): Node  "SW[0]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/PHYctrl_Slave.v Line: 8
+Warning (308071): (Medium) Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain. (Value defined:2). Found 1 asynchronous clock domain interface structure(s) related to this rule.
+    Warning (308010): Node  "fb_slave_mac:fb_slave_mac_ins|MTxD (Bus)" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_mac.v Line: 264
+Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 4 node(s) with highest fan-out.
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateIdle" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 28
+    Info (308011): Node  "ENET1_RX_CLK~inputclkctrl" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/PHYctrl_Slave.v Line: 35
+    Info (308011): Node  "~GND"
+    Info (308011): Node  "CLOCK_50~inputclkctrl" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/PHYctrl_Slave.v Line: 4
+Info (308044): (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info (308011): Node  "CLOCK_50~inputclkctrl" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/PHYctrl_Slave.v Line: 4
+    Info (308011): Node  "ENET1_RX_CLK~inputclkctrl" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/PHYctrl_Slave.v Line: 35
+    Info (308011): Node  "~GND"
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateIdle" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 28
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|LogicDelayCnt~18" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 31
+    Info (308011): Node  "phyInital:phyInital_ins1|eth_miim:eth_miim_ins|InProgress" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_miim.v Line: 88
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|InProgress" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_miim.v Line: 88
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_clockgen.v Line: 78
+    Info (308011): Node  "phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_clockgen.v Line: 78
+    Info (308011): Node  "phyIniCommand1:pyhIniCommands1|ram~3" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/phyIniCommand1.v Line: 15
+    Info (308011): Node  "phyIniCommand0:pyhIniCommands|ram~3" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/phyIniCommand0.v Line: 15
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn_n" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_clockgen.v Line: 79
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|TotalSentNibCnt[2]~23" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 114
+    Info (308011): Node  "phyInital:phyInital_ins1|eth_miim:eth_miim_ins|eth_clockgen:clkgen|MdcEn_n" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_clockgen.v Line: 79
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveCrc" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 36
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_counters:fb_slave_counters_ins|ResetRxRamAddr" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_counters.v Line: 187
+    Info (308011): Node  "phyInital:phyInital_ins1|eth_miim:eth_miim_ins|WriteOp" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_miim.v Line: 93
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|WriteOp" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_miim.v Line: 93
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateFrmCrc" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 37
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|GenerateRxValid~7" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_mac.v Line: 93
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|SlaveID[3]~0" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_mac.v Line: 328
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[1]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 104
+    Info (308011): Node  "ENET0_TX_CLK~inputclkctrl" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/PHYctrl_Slave.v Line: 20
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|BitCounter[4]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_miim.v Line: 320
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateNumb" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 31
+    Info (308011): Node  "phyInital:phyInital_ins1|eth_miim:eth_miim_ins|BitCounter[4]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_miim.v Line: 320
+    Info (308011): Node  "fb_slave_mac:fb_slave_mac_ins|fb_slave_statem:fb_slave_statem_ins|StateSlaveData[0]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/freedm_bus_slave/fb_slave_statem.v Line: 104
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|BitCounter[3]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_miim.v Line: 320
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Equal0~0" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_clockgen.v Line: 123
+    Info (308011): Node  "phyInital:phyInital_ins0|eth_miim:eth_miim_ins|eth_clockgen:clkgen|Equal0~1" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave/eth_clockgen.v Line: 123
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 54 information messages and 14 warning messages
+Info: Quartus Prime Design Assistant was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 717 megabytes
+    Info: Processing ended: Thu Jul 06 15:10:49 2017
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

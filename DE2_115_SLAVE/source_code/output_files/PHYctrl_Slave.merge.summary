@@ -1,0 +1,14 @@
+Partition Merge Status : Successful - Thu Jul 06 16:07:42 2017
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+Revision Name : PHYctrl_Slave
+Top-level Entity Name : PHYctrl_Slave
+Family : Cyclone IV E
+Total logic elements : 708
+    Total combinational functions : 585
+    Dedicated logic registers : 350
+Total registers : 350
+Total pins : 147
+Total virtual pins : 0
+Total memory bits : 2,816
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
