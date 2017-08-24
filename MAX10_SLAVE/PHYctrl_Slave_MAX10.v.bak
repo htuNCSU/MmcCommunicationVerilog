@@ -1,0 +1,244 @@
+
+
+module PHYctrl_Slave_MAX10 (
+   input         CLOCK_50,
+   
+   input  [17: 0] SW,
+   output [8: 0] LEDG,
+   
+   // Ethernet 0
+   output        ENET0_MDC,
+   inout         ENET0_MDIO,
+   output        ENET0_RESET_N,
+   
+   output        ENET0_GTX_CLK,
+   input         ENET0_TX_CLK,
+   input         ENET0_RX_CLK,
+   input  [3: 0] ENET0_RX_DATA,
+   input         ENET0_RX_DV,
+   
+   output [3: 0] ENET0_TX_DATA,
+   output        ENET0_TX_EN,
+   output        ENET0_TX_ER,
+   // Ethernet 1
+   output        ENET1_GTX_CLK,
+   output        ENET1_MDC,
+   inout         ENET1_MDIO,
+   output        ENET1_RESET_N,
+   
+   input         ENET1_TX_CLK,
+   input         ENET1_RX_CLK,
+   input  [3: 0] ENET1_RX_DATA,
+   input         ENET1_RX_DV,
+   
+   output [3: 0] ENET1_TX_DATA,
+   output        ENET1_TX_EN
+);
+
+   assign ENET0_RESET_N = 1'b1;
+   assign ENET1_RESET_N = 1'b1;
+
+   
+   assign ENET1_TX_EN = SW[9];
+   
+   wire clk_tx0_25;
+   wire clk_tx1_25;
+   wire clk_rx0_25;
+   wire clk_rx1_25;
+   assign clk_tx0_25 = ENET0_TX_CLK;
+   assign clk_tx1_25 = ENET1_TX_CLK;
+   assign clk_rx0_25 = ENET0_RX_CLK;
+   assign clk_rx1_25 = ENET1_RX_CLK;
+   
+ 
+///////////////////////////////////////   transmitter mac  /////////////////////////////
+ 
+   wire [7:0] TxRamAddr;
+   wire [7:0] TxData;
+   
+   //dual port ram for tx, a port for write from higher level, b port for read from txmac
+   tx_dual_port_ram_8bit tx_dual_port_ram_8bit_ins( 
+    //.data_a, 
+      .data_b(TxData),
+    //.addr_a, 
+      .addr_b(TxRamAddr),
+    //.we_a, 
+      .we_b(1'b0), 
+      .clk(clk_rx1_25),
+    //.q_a, 
+      .q_b(TxData)
+     );
+     
+////////////////////////////////////       receiver mac              /////////////////////////////
+   wire [7:0]RxRamAddr;
+   wire [7:0]RxData;
+   wire RxValid;
+
+
+   wire [7:0]readFromRxRam8bit;
+   //dual port ram for rx, a port for write from rxmac, b port for read from higher level
+   rx_dual_port_ram_8bit rx_dual_port_ram_8bit_ins(
+   
+      .data_a(RxData), 
+      //.data_b,
+      .addr_a(RxRamAddr),
+      .addr_b(SW[7:2]),
+      .we_a(RxValid), 
+      .we_b(1'b0),
+      .clk(clk_rx1_25),
+      //.q_a, 
+      .q_b(readFromRxRam8bit)
+   );
+   
+     
+   reg [5:0]rx_ram_addr1;
+   always @ (posedge clk_rx1_25 )
+   begin
+         if (SW[8]) begin
+               rx_ram_addr1 <= 6'b0;
+         end else if (ENET1_RX_DV)begin
+               if (rx_ram_addr1 < 6'b111110 )
+                   rx_ram_addr1 <= rx_ram_addr1 + 1'b1; 
+         end
+   end
+   
+   wire [3:0]readFromRxRam;
+   rx_data_ram rx_data_ram_ins(
+   
+      .data_a(ENET1_RX_DATA), 
+      //.data_b,
+      .addr_a(rx_ram_addr1),
+      .addr_b(SW[7:2]),
+      .we_a(ENET1_RX_DV), 
+      .we_b(1'b0),
+      .clk(clk_rx1_25),
+      //.q_a, 
+      .q_b(readFromRxRam)
+   );
+   
+
+   
+   
+   wire [7:0]LastSlaveIDPlus1;
+   wire [7:0]SlaveID;
+   wire [3:0]readSlaveID;
+   fb_slave_mac fb_slave_mac_ins
+ (
+      .MRxClk(clk_rx1_25), 
+      .MTxClk(clk_tx0_25), 
+      .MRxDV(ENET1_RX_DV), 
+      .MRxD(ENET1_RX_DATA), 
+      .Reset(SW[8]), 
+      .TxData(TxData),
+      .inSlaveID(8'd0), 
+      .inLastSlaveIDPlus1(8'd2), 
+      
+      .MTxD_sync2(ENET0_TX_DATA), 
+      .MTxEn_sync2(ENET0_TX_EN), 
+      .RxData(RxData), 
+      .RxValid(RxValid),
+      .RxRamAddr(RxRamAddr),
+      .TxRamAddr(TxRamAddr),
+      .SlaveID(SlaveID),
+      .LastSlaveIDPlus1(LastSlaveIDPlus1)
+    /*.FrmCrcError
+      .CrcError, 
+      .StateIdle, 
+      .StatePreamble,
+      .StateNumb,
+      .StateSlaveID,
+      .StateFFS, 
+      .StateData, 
+      .StateSlaveData, 
+      .StateSlaveCrc, 
+      .StateFrmCrc*/
+);
+   assign readSlaveID = SW[1]?LastSlaveIDPlus1[3:0]:SlaveID[3:0];
+   LEDnumb LED5(HEX5, readSlaveID);
+//////////////////////////////////         MI INTERFACE FOR PORT 0 ///////////////////////////////
+   wire [31:0] command0;
+   wire [15:0] command_and0;
+   wire [3: 0] comm_addr0;
+   wire [15:0] readData0;
+   wire [15:0] readDataRam0;
+   phyInital phyInital_ins0 (
+   
+      .clk(CLOCK_50),
+      .reset(SW[0]),
+      .mdc(ENET0_MDC),
+      .md_inout(ENET0_MDIO),
+      .command(command0),
+      .command_and(command_and0),
+      
+      .comm_addr(comm_addr0),
+      .ram_read_addr(SW[5:2]),
+      .iniStart(1'b1),
+      .iniEnd(LEDG[0]),
+    //.stateout(LEDR[12:0]),
+      .readDataoutRam(readDataRam0),
+      .busy(LEDG[8]),
+      .WCtrlDataStartout(LEDG[7])
+      );
+   
+   phyIniCommand0 pyhIniCommands (
+      .clk(CLOCK_50),
+      .q(command0),
+      .addr(comm_addr0)
+      );
+   phyIniCommand0_and pyhIniCommands_and (
+      .clk(CLOCK_50),
+      .q(command_and0),
+      .addr(comm_addr0)
+      );
+      
+//////////////////////////////////////////////////////  MI INTERFACE FOR PORT 1 ///////////////////////////////
+   wire [31:0] command1;
+   wire [15:0] command_and1;
+   wire [3: 0] comm_addr1;
+   wire [15:0] readData1;
+   wire [15:0] readDataRam1;
+   phyInital phyInital_ins1 (
+   
+      .clk(CLOCK_50),
+      .reset(SW[0]),
+      .mdc(ENET1_MDC),
+      .md_inout(ENET1_MDIO),
+      .command(command1),
+      .command_and(command_and1),
+      
+      .comm_addr(comm_addr1),
+      .ram_read_addr(SW[5:2]),
+      .iniStart(1'b1),
+      .iniEnd(LEDG[1]),
+     //.stateout(LEDR[12:0]),
+      .readDataoutRam(readDataRam1),
+      .busy(LEDG[6]),
+      .WCtrlDataStartout(LEDG[5])
+      );
+   
+   phyIniCommand1 pyhIniCommands1 (
+      .clk(CLOCK_50),
+      .q(command1),
+      .addr(comm_addr1)
+      );
+   phyIniCommand1_and pyhIniCommands_and1 (
+      .clk(CLOCK_50),
+      .q(command_and1),
+      .addr(comm_addr1)
+      );
+      
+///////////////////////////////////////////////////end of MI INTERFACE FOR PORT 1 ///////////////////////////////
+      wire readDataRamSelect = SW[1];
+      wire [15:0] readDataRam;
+      assign readDataRam = readDataRamSelect?readDataRam1:readDataRam0;
+
+
+      
+      
+endmodule 
+
+
+
+  
+  
+  

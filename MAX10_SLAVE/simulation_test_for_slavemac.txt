@@ -1,0 +1,58 @@
+vsim -gui -l msim_transcript -do PHYctrl_Slave_run_msim_rtl_verilog.do work.fb_slave_mac
+
+change time to 40ns
+
+force -freeze sim:/fb_slave_mac/MRxClk 1 0, 0 {20 ns} -r 40
+force -freeze sim:/fb_slave_mac/MTxClk 1 15, 0 {35 ns} -r 40
+force -freeze sim:/fb_slave_mac/Reset 1 0
+run
+force -freeze sim:/fb_slave_mac/Reset 0 0
+run
+run
+run
+run
+force -freeze sim:/fb_slave_mac/inSlaveID 00000000 0
+force -freeze sim:/fb_slave_mac/inLastSlaveIDPlus1 8'd2 0
+force -freeze sim:/fb_slave_mac/MRxD 0101 0
+force -freeze sim:/fb_slave_mac/MRxDV 1 0
+force -freeze sim:/fb_slave_mac/TxData 8'h8b 0
+run
+run
+run
+force -freeze sim:/fb_slave_mac/MRxD 0111 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 0011 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1010 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 0011 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1010 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1100 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1010 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 0011 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1010 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 0011 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1010 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1100 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 1010 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 0001 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 0101 0
+run
+force -freeze sim:/fb_slave_mac/MRxD 0000 0
+force -freeze sim:/fb_slave_mac/MRxDV 0 0
+run
+run
+run
+run
+run
