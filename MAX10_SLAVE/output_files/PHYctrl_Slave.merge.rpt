@@ -1,0 +1,388 @@
+Partition Merge report for PHYctrl_Slave
+Wed Jul 05 16:47:01 2017
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Partition Merge Partition Statistics
+  5. Partition Merge Partition Pin Processing
+  6. Partition Merge Resource Usage Summary
+  7. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Partition Merge Summary                                                              ;
++------------------------------------+-------------------------------------------------+
+; Partition Merge Status             ; Successful - Wed Jul 05 16:47:01 2017           ;
+; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
+; Revision Name                      ; PHYctrl_Slave                                   ;
+; Top-level Entity Name              ; PHYctrl_Slave_MAX10                             ;
+; Family                             ; MAX 10                                          ;
+; Total logic elements               ; 152                                             ;
+;     Total combinational functions  ; 113                                             ;
+;     Dedicated logic registers      ; 89                                              ;
+; Total registers                    ; 89                                              ;
+; Total pins                         ; 43                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
+; UFM blocks                         ; 0                                               ;
+; ADC blocks                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                            ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Source File       ; Source File            ;                                ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Partition Merge Partition Statistics                                               ;
++---------------------------------------------+-----+--------------------------------+
+; Statistic                                   ; Top ; hard_block:auto_generated_inst ;
++---------------------------------------------+-----+--------------------------------+
+; Estimated Total logic elements              ; 152 ; 0                              ;
+;                                             ;     ;                                ;
+; Total combinational functions               ; 113 ; 0                              ;
+; Logic element usage by number of LUT inputs ;     ;                                ;
+;     -- 4 input functions                    ; 47  ; 0                              ;
+;     -- 3 input functions                    ; 30  ; 0                              ;
+;     -- <=2 input functions                  ; 36  ; 0                              ;
+;                                             ;     ;                                ;
+; Logic elements by mode                      ;     ;                                ;
+;     -- normal mode                          ; 100 ; 0                              ;
+;     -- arithmetic mode                      ; 13  ; 0                              ;
+;                                             ;     ;                                ;
+; Total registers                             ; 89  ; 0                              ;
+;     -- Dedicated logic registers            ; 89  ; 0                              ;
+;     -- I/O registers                        ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Virtual pins                                ; 0   ; 0                              ;
+; I/O pins                                    ; 43  ; 0                              ;
+; Embedded Multiplier 9-bit elements          ; 0   ; 0                              ;
+; Total memory bits                           ; 0   ; 0                              ;
+; Total RAM block bits                        ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Connections                                 ;     ;                                ;
+;     -- Input Connections                    ; 1   ; 0                              ;
+;     -- Registered Input Connections         ; 0   ; 0                              ;
+;     -- Output Connections                   ; 1   ; 0                              ;
+;     -- Registered Output Connections        ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Internal Connections                        ;     ;                                ;
+;     -- Total Connections                    ; 723 ; 0                              ;
+;     -- Registered Connections               ; 240 ; 0                              ;
+;                                             ;     ;                                ;
+; External Connections                        ;     ;                                ;
+;     -- Top                                  ; 2   ; 0                              ;
+;     -- hard_block:auto_generated_inst       ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Partition Interface                         ;     ;                                ;
+;     -- Input Ports                          ; 21  ; 0                              ;
+;     -- Output Ports                         ; 21  ; 0                              ;
+;     -- Bidir Ports                          ; 1   ; 0                              ;
+;                                             ;     ;                                ;
+; Registered Ports                            ;     ;                                ;
+;     -- Registered Input Ports               ; 0   ; 0                              ;
+;     -- Registered Output Ports              ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Port Connectivity                           ;     ;                                ;
+;     -- Input Ports driven by GND            ; 0   ; 0                              ;
+;     -- Output Ports driven by GND           ; 0   ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0   ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0   ; 0                              ;
+;     -- Input Ports with no Source           ; 0   ; 0                              ;
+;     -- Output Ports with no Source          ; 0   ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0   ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0   ; 0                              ;
++---------------------------------------------+-----+--------------------------------+
+Note: Resource usage numbers presented for Partitions containing post-synthesis logic are estimates.  For Partitions containing post-fit logic, resource usage numbers are accurate based on previous placement information.  Actual Fitter results may vary depending on current Fitter Preservation Level assignments.
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                                                           ;
++--------------------------------+-----------+---------------+----------+--------------------------------------------+
+; Name                           ; Partition ; Type          ; Location ; Status                                     ;
++--------------------------------+-----------+---------------+----------+--------------------------------------------+
+; CLOCK_50_MAX10                 ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- CLOCK_50_MAX10          ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- CLOCK_50_MAX10~input    ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_GTX_CLK                  ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_GTX_CLK           ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_GTX_CLK~output    ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_LED_LINK100              ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_LED_LINK100       ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_LED_LINK100~input ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_RESET_N                  ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_RESET_N           ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_RESET_N~output    ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_RX_CLK                   ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_RX_CLK            ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_RX_CLK~input      ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_RX_DATA[0]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_RX_DATA[0]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_RX_DATA[0]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_RX_DATA[1]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_RX_DATA[1]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_RX_DATA[1]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_RX_DATA[2]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_RX_DATA[2]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_RX_DATA[2]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_RX_DATA[3]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_RX_DATA[3]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_RX_DATA[3]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_RX_DV                    ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_RX_DV             ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_RX_DV~input       ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_TX_CLK                   ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET0_TX_CLK            ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET0_TX_CLK~input      ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_TX_DATA[0]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_TX_DATA[0]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_TX_DATA[0]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_TX_DATA[1]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_TX_DATA[1]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_TX_DATA[1]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_TX_DATA[2]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_TX_DATA[2]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_TX_DATA[2]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_TX_DATA[3]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_TX_DATA[3]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_TX_DATA[3]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_TX_EN                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_TX_EN             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_TX_EN~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET0_TX_ER                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET0_TX_ER             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET0_TX_ER~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_GTX_CLK                  ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET1_GTX_CLK           ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET1_GTX_CLK~output    ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_LED_LINK100              ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_LED_LINK100       ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_LED_LINK100~input ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_RESET_N                  ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET1_RESET_N           ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET1_RESET_N~output    ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_RX_CLK                   ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_RX_CLK            ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_RX_CLK~input      ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_RX_DATA[0]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_RX_DATA[0]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_RX_DATA[0]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_RX_DATA[1]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_RX_DATA[1]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_RX_DATA[1]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_RX_DATA[2]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_RX_DATA[2]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_RX_DATA[2]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_RX_DATA[3]               ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_RX_DATA[3]        ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_RX_DATA[3]~input  ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_RX_DV                    ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_RX_DV             ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_RX_DV~input       ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_TX_CLK                   ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- ENET1_TX_CLK            ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET1_TX_CLK~input      ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_TX_DATA[0]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET1_TX_DATA[0]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET1_TX_DATA[0]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_TX_DATA[1]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET1_TX_DATA[1]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET1_TX_DATA[1]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_TX_DATA[2]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET1_TX_DATA[2]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET1_TX_DATA[2]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_TX_DATA[3]               ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET1_TX_DATA[3]        ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET1_TX_DATA[3]~output ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET1_TX_EN                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET1_TX_EN             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET1_TX_EN~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET_MDC                       ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- ENET_MDC                ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- ENET_MDC~output         ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; ENET_MDIO                      ; Top       ; Bidir Port    ; n/a      ;                                            ;
+;     -- ENET_MDIO               ; Top       ; Bidir Pad     ; Unplaced ; Synthesized                                ;
+;     -- ENET_MDIO~output        ; Top       ; Output Buffer ; Unplaced ; Preserved from Synthesis Netlist (WYSIWYG) ;
+;                                ;           ;               ;          ;                                            ;
+; USER_LED[0]                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- USER_LED[0]             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- USER_LED[0]~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_LED[1]                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- USER_LED[1]             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- USER_LED[1]~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_LED[2]                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- USER_LED[2]             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- USER_LED[2]~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_LED[3]                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- USER_LED[3]             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- USER_LED[3]~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_LED[4]                    ; Top       ; Output Port   ; n/a      ;                                            ;
+;     -- USER_LED[4]             ; Top       ; Output Pad    ; Unplaced ; Synthesized                                ;
+;     -- USER_LED[4]~output      ; Top       ; Output Buffer ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_PB[0]                     ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- USER_PB[0]              ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- USER_PB[0]~input        ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_PB[1]                     ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- USER_PB[1]              ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- USER_PB[1]~input        ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_PB[2]                     ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- USER_PB[2]              ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- USER_PB[2]~input        ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
+; USER_PB[3]                     ; Top       ; Input Port    ; n/a      ;                                            ;
+;     -- USER_PB[3]              ; Top       ; Input Pad     ; Unplaced ; Synthesized                                ;
+;     -- USER_PB[3]~input        ; Top       ; Input Buffer  ; Unplaced ; Synthesized                                ;
+;                                ;           ;               ;          ;                                            ;
++--------------------------------+-----------+---------------+----------+--------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Partition Merge Resource Usage Summary                             ;
++---------------------------------------------+----------------------+
+; Resource                                    ; Usage                ;
++---------------------------------------------+----------------------+
+; Estimated Total logic elements              ; 152                  ;
+;                                             ;                      ;
+; Total combinational functions               ; 113                  ;
+; Logic element usage by number of LUT inputs ;                      ;
+;     -- 4 input functions                    ; 47                   ;
+;     -- 3 input functions                    ; 30                   ;
+;     -- <=2 input functions                  ; 36                   ;
+;                                             ;                      ;
+; Logic elements by mode                      ;                      ;
+;     -- normal mode                          ; 100                  ;
+;     -- arithmetic mode                      ; 13                   ;
+;                                             ;                      ;
+; Total registers                             ; 89                   ;
+;     -- Dedicated logic registers            ; 89                   ;
+;     -- I/O registers                        ; 0                    ;
+;                                             ;                      ;
+; I/O pins                                    ; 43                   ;
+;                                             ;                      ;
+; Embedded Multiplier 9-bit elements          ; 0                    ;
+;                                             ;                      ;
+; Maximum fan-out node                        ; CLOCK_50_MAX10~input ;
+; Maximum fan-out                             ; 89                   ;
+; Total fan-out                               ; 723                  ;
+; Average fan-out                             ; 2.50                 ;
++---------------------------------------------+----------------------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Partition Merge
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+    Info: Processing started: Wed Jul 05 16:47:00 2017
+Info: Command: quartus_cdb --read_settings_files=on --write_settings_files=off PHYctrl_Slave -c PHYctrl_Slave --merge=on
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (35007): Using synthesis netlist for partition "Top"
+Info (35002): Resolved and merged 1 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 17 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "USER_PB[1]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 6
+    Warning (15610): No output dependent on input pin "USER_PB[2]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 6
+    Warning (15610): No output dependent on input pin "USER_PB[3]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 6
+    Warning (15610): No output dependent on input pin "ENET0_TX_CLK" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 17
+    Warning (15610): No output dependent on input pin "ENET0_RX_CLK" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 18
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[0]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 19
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[1]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 19
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[2]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 19
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[3]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 19
+    Warning (15610): No output dependent on input pin "ENET0_RX_DV" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 20
+    Warning (15610): No output dependent on input pin "ENET1_TX_CLK" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 30
+    Warning (15610): No output dependent on input pin "ENET1_RX_CLK" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 31
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[0]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 32
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[1]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 32
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[2]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 32
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[3]" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 32
+    Warning (15610): No output dependent on input pin "ENET1_RX_DV" File: C:/altera/16.0/myProjects/PHYctrl_100Mbps_Slave_max10/PHYctrl_Slave_MAX10.v Line: 33
+Info (21057): Implemented 196 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 21 input pins
+    Info (21059): Implemented 21 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 153 logic cells
+Info: Quartus Prime Partition Merge was successful. 0 errors, 19 warnings
+    Info: Peak virtual memory: 753 megabytes
+    Info: Processing ended: Wed Jul 05 16:47:01 2017
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

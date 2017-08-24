@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Thu Jul 20 20:37:51 2017
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+Revision Name : PHYctrl_Slave
+Top-level Entity Name : PHYctrl_Slave_MAX10
+Family : MAX 10
+Total logic elements : 555
+    Total combinational functions : 453
+    Dedicated logic registers : 286
+Total registers : 286
+Total pins : 46
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 4
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 0

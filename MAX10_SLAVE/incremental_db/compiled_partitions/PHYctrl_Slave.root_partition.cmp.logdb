@@ -1,0 +1,4 @@
+v1
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,fb_slave_mac:fb_slave_mac_ins|SynchModule:SynchModule_ins|lpm_mult:Mult0|mult_ams:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,fb_slave_mac:fb_slave_mac_ins|SynchModule:SynchModule_ins|lpm_mult:Mult0|mult_ams:auto_generated|mac_out4,
+PORT_SWAPPING,PORT_SWAPPING_FINISHED,fb_slave_mac:fb_slave_mac_ins|SynchModule:SynchModule_ins|lpm_mult:Mult0|mult_ams:auto_generated|mac_mult3,

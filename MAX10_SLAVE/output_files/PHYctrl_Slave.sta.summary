@@ -1,0 +1,89 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50_MAX10'
+Slack : 15.386
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'ENET1_RX_CLK'
+Slack : 32.762
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ENET1_RX_CLK'
+Slack : 0.324
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50_MAX10'
+Slack : 0.326
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50_MAX10'
+Slack : 9.652
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ENET1_RX_CLK'
+Slack : 19.486
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 36.000
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50_MAX10'
+Slack : 15.838
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'ENET1_RX_CLK'
+Slack : 33.388
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ENET1_RX_CLK'
+Slack : 0.294
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50_MAX10'
+Slack : 0.296
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50_MAX10'
+Slack : 9.666
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ENET1_RX_CLK'
+Slack : 19.511
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 36.000
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50_MAX10'
+Slack : 17.757
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'ENET1_RX_CLK'
+Slack : 36.327
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ENET1_RX_CLK'
+Slack : 0.148
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50_MAX10'
+Slack : 0.150
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50_MAX10'
+Slack : 9.467
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ENET1_RX_CLK'
+Slack : 19.455
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 36.000
+TNS   : 0.000
+
+------------------------------------------------------------

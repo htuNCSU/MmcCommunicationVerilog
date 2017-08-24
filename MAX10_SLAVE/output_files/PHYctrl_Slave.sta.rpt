@@ -1,0 +1,738 @@
+TimeQuest Timing Analyzer report for PHYctrl_Slave
+Thu Jul 20 20:38:18 2017
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow 1200mV 85C Model Fmax Summary
+  7. Slow 1200mV 85C Model Setup Summary
+  8. Slow 1200mV 85C Model Hold Summary
+  9. Slow 1200mV 85C Model Recovery Summary
+ 10. Slow 1200mV 85C Model Removal Summary
+ 11. Slow 1200mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1200mV 85C Model Metastability Summary
+ 13. Slow 1200mV 0C Model Fmax Summary
+ 14. Slow 1200mV 0C Model Setup Summary
+ 15. Slow 1200mV 0C Model Hold Summary
+ 16. Slow 1200mV 0C Model Recovery Summary
+ 17. Slow 1200mV 0C Model Removal Summary
+ 18. Slow 1200mV 0C Model Minimum Pulse Width Summary
+ 19. Slow 1200mV 0C Model Metastability Summary
+ 20. Fast 1200mV 0C Model Setup Summary
+ 21. Fast 1200mV 0C Model Hold Summary
+ 22. Fast 1200mV 0C Model Recovery Summary
+ 23. Fast 1200mV 0C Model Removal Summary
+ 24. Fast 1200mV 0C Model Minimum Pulse Width Summary
+ 25. Fast 1200mV 0C Model Metastability Summary
+ 26. Multicorner Timing Analysis Summary
+ 27. Board Trace Model Assignments
+ 28. Input Transition Times
+ 29. Signal Integrity Metrics (Slow 1200mv 0c Model)
+ 30. Signal Integrity Metrics (Slow 1200mv 85c Model)
+ 31. Signal Integrity Metrics (Fast 1200mv 0c Model)
+ 32. Setup Transfers
+ 33. Hold Transfers
+ 34. Report TCCS
+ 35. Report RSKM
+ 36. Unconstrained Paths Summary
+ 37. Clock Status Summary
+ 38. Unconstrained Input Ports
+ 39. Unconstrained Output Ports
+ 40. Unconstrained Input Ports
+ 41. Unconstrained Output Ports
+ 42. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                               ;
++-----------------------+---------------------------------------------------------+
+; Quartus Prime Version ; Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
+; Timing Analyzer       ; TimeQuest                                               ;
+; Revision Name         ; PHYctrl_Slave                                           ;
+; Device Family         ; MAX 10                                                  ;
+; Device Name           ; 10M50DAF484C6GES                                        ;
+; Timing Models         ; Preliminary                                             ;
+; Delay Model           ; Combined                                                ;
+; Rise/Fall Delays      ; Enabled                                                 ;
++-----------------------+---------------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.10        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   9.6%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------+
+; SDC File List                                     ;
++---------------+--------+--------------------------+
+; SDC File Path ; Status ; Read at                  ;
++---------------+--------+--------------------------+
+; phy.sdc       ; OK     ; Thu Jul 20 20:38:15 2017 ;
++---------------+--------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                         ;
++----------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------+
+; Clock Name     ; Type ; Period ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets            ;
++----------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------+
+; CLOCK_50_MAX10 ; Base ; 20.000 ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50_MAX10 } ;
+; ENET0_RX_CLK   ; Base ; 40.000 ; 25.0 MHz  ; 0.000 ; 20.000 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { ENET0_RX_CLK }   ;
+; ENET1_RX_CLK   ; Base ; 40.000 ; 25.0 MHz  ; 0.000 ; 20.000 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { ENET1_RX_CLK }   ;
++----------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------+
+
+
++------------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary                   ;
++------------+-----------------+----------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name     ; Note ;
++------------+-----------------+----------------+------+
+; 138.16 MHz ; 138.16 MHz      ; ENET1_RX_CLK   ;      ;
+; 216.73 MHz ; 216.73 MHz      ; CLOCK_50_MAX10 ;      ;
++------------+-----------------+----------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------------+
+; Slow 1200mV 85C Model Setup Summary     ;
++----------------+--------+---------------+
+; Clock          ; Slack  ; End Point TNS ;
++----------------+--------+---------------+
+; CLOCK_50_MAX10 ; 15.386 ; 0.000         ;
+; ENET1_RX_CLK   ; 32.762 ; 0.000         ;
++----------------+--------+---------------+
+
+
++----------------------------------------+
+; Slow 1200mV 85C Model Hold Summary     ;
++----------------+-------+---------------+
+; Clock          ; Slack ; End Point TNS ;
++----------------+-------+---------------+
+; ENET1_RX_CLK   ; 0.324 ; 0.000         ;
+; CLOCK_50_MAX10 ; 0.326 ; 0.000         ;
++----------------+-------+---------------+
+
+
+------------------------------------------
+; Slow 1200mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1200mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
++----------------+--------+-------------------------+
+; Clock          ; Slack  ; End Point TNS           ;
++----------------+--------+-------------------------+
+; CLOCK_50_MAX10 ; 9.652  ; 0.000                   ;
+; ENET1_RX_CLK   ; 19.486 ; 0.000                   ;
+; ENET0_RX_CLK   ; 36.000 ; 0.000                   ;
++----------------+--------+-------------------------+
+
+
+-----------------------------------------------
+; Slow 1200mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                    ;
++------------+-----------------+----------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name     ; Note ;
++------------+-----------------+----------------+------+
+; 151.24 MHz ; 151.24 MHz      ; ENET1_RX_CLK   ;      ;
+; 240.27 MHz ; 240.27 MHz      ; CLOCK_50_MAX10 ;      ;
++------------+-----------------+----------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------------+
+; Slow 1200mV 0C Model Setup Summary      ;
++----------------+--------+---------------+
+; Clock          ; Slack  ; End Point TNS ;
++----------------+--------+---------------+
+; CLOCK_50_MAX10 ; 15.838 ; 0.000         ;
+; ENET1_RX_CLK   ; 33.388 ; 0.000         ;
++----------------+--------+---------------+
+
+
++----------------------------------------+
+; Slow 1200mV 0C Model Hold Summary      ;
++----------------+-------+---------------+
+; Clock          ; Slack ; End Point TNS ;
++----------------+-------+---------------+
+; ENET1_RX_CLK   ; 0.294 ; 0.000         ;
+; CLOCK_50_MAX10 ; 0.296 ; 0.000         ;
++----------------+-------+---------------+
+
+
+-----------------------------------------
+; Slow 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
++----------------+--------+------------------------+
+; Clock          ; Slack  ; End Point TNS          ;
++----------------+--------+------------------------+
+; CLOCK_50_MAX10 ; 9.666  ; 0.000                  ;
+; ENET1_RX_CLK   ; 19.511 ; 0.000                  ;
+; ENET0_RX_CLK   ; 36.000 ; 0.000                  ;
++----------------+--------+------------------------+
+
+
+----------------------------------------------
+; Slow 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++-----------------------------------------+
+; Fast 1200mV 0C Model Setup Summary      ;
++----------------+--------+---------------+
+; Clock          ; Slack  ; End Point TNS ;
++----------------+--------+---------------+
+; CLOCK_50_MAX10 ; 17.757 ; 0.000         ;
+; ENET1_RX_CLK   ; 36.327 ; 0.000         ;
++----------------+--------+---------------+
+
+
++----------------------------------------+
+; Fast 1200mV 0C Model Hold Summary      ;
++----------------+-------+---------------+
+; Clock          ; Slack ; End Point TNS ;
++----------------+-------+---------------+
+; ENET1_RX_CLK   ; 0.148 ; 0.000         ;
+; CLOCK_50_MAX10 ; 0.150 ; 0.000         ;
++----------------+-------+---------------+
+
+
+-----------------------------------------
+; Fast 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
++----------------+--------+------------------------+
+; Clock          ; Slack  ; End Point TNS          ;
++----------------+--------+------------------------+
+; CLOCK_50_MAX10 ; 9.467  ; 0.000                  ;
+; ENET1_RX_CLK   ; 19.455 ; 0.000                  ;
+; ENET0_RX_CLK   ; 36.000 ; 0.000                  ;
++----------------+--------+------------------------+
+
+
+----------------------------------------------
+; Fast 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                          ;
++------------------+--------+-------+----------+---------+---------------------+
+; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+--------+-------+----------+---------+---------------------+
+; Worst-case Slack ; 15.386 ; 0.148 ; N/A      ; N/A     ; 9.467               ;
+;  CLOCK_50_MAX10  ; 15.386 ; 0.150 ; N/A      ; N/A     ; 9.467               ;
+;  ENET0_RX_CLK    ; N/A    ; N/A   ; N/A      ; N/A     ; 36.000              ;
+;  ENET1_RX_CLK    ; 32.762 ; 0.148 ; N/A      ; N/A     ; 19.455              ;
+; Design-wide TNS  ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  CLOCK_50_MAX10  ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
+;  ENET0_RX_CLK    ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  ENET1_RX_CLK    ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++------------------+--------+-------+----------+---------+---------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                       ;
++------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin              ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; USER_LED[0]      ; 1.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; USER_LED[1]      ; 1.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; USER_LED[2]      ; 1.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; USER_LED[3]      ; 1.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; USER_LED[4]      ; 1.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; PMODA_IO[0]      ; 3.3-V LVCMOS ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; PMODA_IO[1]      ; 3.3-V LVCMOS ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET_MDC         ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_RESET_N    ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_GTX_CLK    ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_TX_DATA[0] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_TX_DATA[1] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_TX_DATA[2] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_TX_DATA[3] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_TX_EN      ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET0_TX_ER      ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET1_GTX_CLK    ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET1_RESET_N    ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET1_TX_DATA[0] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET1_TX_DATA[1] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET1_TX_DATA[2] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET1_TX_DATA[3] ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET1_TX_EN      ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ENET_MDIO        ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_TDO~     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++---------------------------------------------------------------------------------+
+; Input Transition Times                                                          ;
++---------------------+-----------------------+-----------------+-----------------+
+; Pin                 ; I/O Standard          ; 10-90 Rise Time ; 90-10 Fall Time ;
++---------------------+-----------------------+-----------------+-----------------+
+; USER_PB[2]          ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; ENET0_RX_CLK        ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET0_RX_DATA[0]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET0_RX_DATA[1]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET0_RX_DATA[2]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET0_RX_DATA[3]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET0_RX_DV         ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET1_TX_CLK        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; ENET_MDIO           ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; USER_PB[1]          ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; ENET0_LED_LINK100   ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET1_LED_LINK100   ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; USER_PB[3]          ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; ENET1_RX_CLK        ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; CLOCK_50_MAX10      ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; USER_PB[0]          ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; ENET0_TX_CLK        ; 3.3-V LVCMOS          ; 2640 ps         ; 2640 ps         ;
+; ENET1_RX_DATA[2]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET1_RX_DATA[0]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET1_RX_DATA[1]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET1_RX_DATA[3]    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ENET1_RX_DV         ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; CLOCK_25_MAX10      ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TMS~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TCK~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TDI~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_CONFIG_SEL~ ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; ~ALTERA_nCONFIG~    ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
+; ~ALTERA_nSTATUS~    ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
+; ~ALTERA_CONF_DONE~  ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
++---------------------+-----------------------+-----------------+-----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin              ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; USER_LED[0]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 4.6e-09 V                    ; 1.4 V               ; -0.0114 V           ; 0.064 V                              ; 0.017 V                              ; 4.42e-10 s                  ; 4.34e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 4.6e-09 V                   ; 1.4 V              ; -0.0114 V          ; 0.064 V                             ; 0.017 V                             ; 4.42e-10 s                 ; 4.34e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[1]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 4.61e-09 V                   ; 1.4 V               ; -0.0112 V           ; 0.065 V                              ; 0.046 V                              ; 4.42e-10 s                  ; 4.34e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 4.61e-09 V                  ; 1.4 V              ; -0.0112 V          ; 0.065 V                             ; 0.046 V                             ; 4.42e-10 s                 ; 4.34e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[2]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 4.6e-09 V                    ; 1.4 V               ; -0.0114 V           ; 0.064 V                              ; 0.017 V                              ; 4.42e-10 s                  ; 4.34e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 4.6e-09 V                   ; 1.4 V              ; -0.0114 V          ; 0.064 V                             ; 0.017 V                             ; 4.42e-10 s                 ; 4.34e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[3]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 4.6e-09 V                    ; 1.4 V               ; -0.0114 V           ; 0.064 V                              ; 0.017 V                              ; 4.42e-10 s                  ; 4.34e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 4.6e-09 V                   ; 1.4 V              ; -0.0114 V          ; 0.064 V                             ; 0.017 V                             ; 4.42e-10 s                 ; 4.34e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[4]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 4.61e-09 V                   ; 1.4 V               ; -0.0112 V           ; 0.065 V                              ; 0.046 V                              ; 4.42e-10 s                  ; 4.34e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 4.61e-09 V                  ; 1.4 V              ; -0.0112 V          ; 0.065 V                             ; 0.046 V                             ; 4.42e-10 s                 ; 4.34e-10 s                 ; Yes                       ; Yes                       ;
+; PMODA_IO[0]      ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 9.35e-08 V                   ; 3.14 V              ; -0.0351 V           ; 0.328 V                              ; 0.191 V                              ; 6.87e-10 s                  ; 8.12e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 9.35e-08 V                  ; 3.14 V             ; -0.0351 V          ; 0.328 V                             ; 0.191 V                             ; 6.87e-10 s                 ; 8.12e-10 s                 ; No                        ; No                        ;
+; PMODA_IO[1]      ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 9.35e-08 V                   ; 3.14 V              ; -0.0353 V           ; 0.328 V                              ; 0.191 V                              ; 6.87e-10 s                  ; 8.12e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 9.35e-08 V                  ; 3.14 V             ; -0.0353 V          ; 0.328 V                             ; 0.191 V                             ; 6.87e-10 s                 ; 8.12e-10 s                 ; No                        ; No                        ;
+; ENET_MDC         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET0_RESET_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.41 V              ; -0.055 V            ; 0.153 V                              ; 0.113 V                              ; 4.49e-10 s                  ; 4.13e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.41 V             ; -0.055 V           ; 0.153 V                             ; 0.113 V                             ; 4.49e-10 s                 ; 4.13e-10 s                 ; No                        ; Yes                       ;
+; ENET0_GTX_CLK    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[0] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[1] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[2] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[3] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_EN      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_ER      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET1_GTX_CLK    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET1_RESET_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[0] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[1] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[2] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[3] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_EN      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0607 V           ; 0.271 V                              ; 0.095 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0607 V          ; 0.271 V                             ; 0.095 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ENET_MDIO        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.17e-08 V                   ; 2.42 V              ; -0.0619 V           ; 0.272 V                              ; 0.096 V                              ; 2.93e-10 s                  ; 3.92e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.17e-08 V                  ; 2.42 V             ; -0.0619 V          ; 0.272 V                             ; 0.096 V                             ; 2.93e-10 s                 ; 3.92e-10 s                 ; No                        ; Yes                       ;
+; ~ALTERA_TDO~     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.97e-08 V                   ; 2.4 V               ; -0.023 V            ; 0.201 V                              ; 0.081 V                              ; 4.59e-10 s                  ; 5.51e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.97e-08 V                  ; 2.4 V              ; -0.023 V           ; 0.201 V                             ; 0.081 V                             ; 4.59e-10 s                 ; 5.51e-10 s                 ; No                        ; Yes                       ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin              ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; USER_LED[0]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 8.23e-07 V                   ; 1.39 V              ; -0.0078 V           ; 0.038 V                              ; 0.03 V                               ; 4.88e-10 s                  ; 5.36e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 8.23e-07 V                  ; 1.39 V             ; -0.0078 V          ; 0.038 V                             ; 0.03 V                              ; 4.88e-10 s                 ; 5.36e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[1]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 8.24e-07 V                   ; 1.39 V              ; -0.00775 V          ; 0.038 V                              ; 0.03 V                               ; 4.88e-10 s                  ; 5.36e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 8.24e-07 V                  ; 1.39 V             ; -0.00775 V         ; 0.038 V                             ; 0.03 V                              ; 4.88e-10 s                 ; 5.36e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[2]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 8.23e-07 V                   ; 1.39 V              ; -0.0078 V           ; 0.038 V                              ; 0.03 V                               ; 4.88e-10 s                  ; 5.36e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 8.23e-07 V                  ; 1.39 V             ; -0.0078 V          ; 0.038 V                             ; 0.03 V                              ; 4.88e-10 s                 ; 5.36e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[3]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 8.23e-07 V                   ; 1.39 V              ; -0.0078 V           ; 0.038 V                              ; 0.03 V                               ; 4.88e-10 s                  ; 5.36e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 8.23e-07 V                  ; 1.39 V             ; -0.0078 V          ; 0.038 V                             ; 0.03 V                              ; 4.88e-10 s                 ; 5.36e-10 s                 ; Yes                       ; Yes                       ;
+; USER_LED[4]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.37 V                       ; 8.24e-07 V                   ; 1.39 V              ; -0.00775 V          ; 0.038 V                              ; 0.03 V                               ; 4.88e-10 s                  ; 5.36e-10 s                  ; Yes                        ; Yes                        ; 1.37 V                      ; 8.24e-07 V                  ; 1.39 V             ; -0.00775 V         ; 0.038 V                             ; 0.03 V                              ; 4.88e-10 s                 ; 5.36e-10 s                 ; Yes                       ; Yes                       ;
+; PMODA_IO[0]      ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 9.47e-06 V                   ; 3.11 V              ; -0.0194 V           ; 0.264 V                              ; 0.182 V                              ; 8.8e-10 s                   ; 9.96e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 9.47e-06 V                  ; 3.11 V             ; -0.0194 V          ; 0.264 V                             ; 0.182 V                             ; 8.8e-10 s                  ; 9.96e-10 s                 ; Yes                       ; Yes                       ;
+; PMODA_IO[1]      ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 9.47e-06 V                   ; 3.11 V              ; -0.0188 V           ; 0.264 V                              ; 0.182 V                              ; 8.81e-10 s                  ; 9.96e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 9.47e-06 V                  ; 3.11 V             ; -0.0188 V          ; 0.264 V                             ; 0.182 V                             ; 8.81e-10 s                 ; 9.96e-10 s                 ; Yes                       ; Yes                       ;
+; ENET_MDC         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET0_RESET_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.036 V            ; 0.183 V                              ; 0.07 V                               ; 4.76e-10 s                  ; 4.7e-10 s                   ; Yes                        ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.036 V           ; 0.183 V                             ; 0.07 V                              ; 4.76e-10 s                 ; 4.7e-10 s                  ; Yes                       ; Yes                       ;
+; ENET0_GTX_CLK    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET0_TX_DATA[0] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET0_TX_DATA[1] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET0_TX_DATA[2] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET0_TX_DATA[3] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET0_TX_EN      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET0_TX_ER      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET1_GTX_CLK    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET1_RESET_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET1_TX_DATA[0] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET1_TX_DATA[1] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET1_TX_DATA[2] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET1_TX_DATA[3] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET1_TX_EN      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.041 V            ; 0.145 V                              ; 0.14 V                               ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.041 V           ; 0.145 V                             ; 0.14 V                              ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ENET_MDIO        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.79e-06 V                   ; 2.38 V              ; -0.0389 V           ; 0.145 V                              ; 0.139 V                              ; 4.54e-10 s                  ; 4.3e-10 s                   ; No                         ; Yes                        ; 2.32 V                      ; 1.79e-06 V                  ; 2.38 V             ; -0.0389 V          ; 0.145 V                             ; 0.139 V                             ; 4.54e-10 s                 ; 4.3e-10 s                  ; No                        ; Yes                       ;
+; ~ALTERA_TDO~     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.04e-06 V                   ; 2.37 V              ; -0.0108 V           ; 0.13 V                               ; 0.066 V                              ; 6.32e-10 s                  ; 6.45e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.04e-06 V                  ; 2.37 V             ; -0.0108 V          ; 0.13 V                              ; 0.066 V                             ; 6.32e-10 s                 ; 6.45e-10 s                 ; No                        ; Yes                       ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin              ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; USER_LED[0]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.57 V                       ; 2.35e-08 V                   ; 1.63 V              ; -0.0475 V           ; 0.117 V                              ; 0.092 V                              ; 2.7e-10 s                   ; 2.7e-10 s                   ; Yes                        ; Yes                        ; 1.57 V                      ; 2.35e-08 V                  ; 1.63 V             ; -0.0475 V          ; 0.117 V                             ; 0.092 V                             ; 2.7e-10 s                  ; 2.7e-10 s                  ; Yes                       ; Yes                       ;
+; USER_LED[1]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.57 V                       ; 2.34e-08 V                   ; 1.63 V              ; -0.0474 V           ; 0.117 V                              ; 0.092 V                              ; 2.7e-10 s                   ; 2.7e-10 s                   ; Yes                        ; Yes                        ; 1.57 V                      ; 2.34e-08 V                  ; 1.63 V             ; -0.0474 V          ; 0.117 V                             ; 0.092 V                             ; 2.7e-10 s                  ; 2.7e-10 s                  ; Yes                       ; Yes                       ;
+; USER_LED[2]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.57 V                       ; 2.35e-08 V                   ; 1.63 V              ; -0.0475 V           ; 0.117 V                              ; 0.092 V                              ; 2.7e-10 s                   ; 2.7e-10 s                   ; Yes                        ; Yes                        ; 1.57 V                      ; 2.35e-08 V                  ; 1.63 V             ; -0.0475 V          ; 0.117 V                             ; 0.092 V                             ; 2.7e-10 s                  ; 2.7e-10 s                  ; Yes                       ; Yes                       ;
+; USER_LED[3]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.57 V                       ; 2.35e-08 V                   ; 1.63 V              ; -0.0475 V           ; 0.117 V                              ; 0.092 V                              ; 2.7e-10 s                   ; 2.7e-10 s                   ; Yes                        ; Yes                        ; 1.57 V                      ; 2.35e-08 V                  ; 1.63 V             ; -0.0475 V          ; 0.117 V                             ; 0.092 V                             ; 2.7e-10 s                  ; 2.7e-10 s                  ; Yes                       ; Yes                       ;
+; USER_LED[4]      ; 1.5 V        ; 0 s                 ; 0 s                 ; 1.57 V                       ; 2.34e-08 V                   ; 1.63 V              ; -0.0474 V           ; 0.117 V                              ; 0.092 V                              ; 2.7e-10 s                   ; 2.7e-10 s                   ; Yes                        ; Yes                        ; 1.57 V                      ; 2.34e-08 V                  ; 1.63 V             ; -0.0474 V          ; 0.117 V                             ; 0.092 V                             ; 2.7e-10 s                  ; 2.7e-10 s                  ; Yes                       ; Yes                       ;
+; PMODA_IO[0]      ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.46 V                       ; 8.93e-07 V                   ; 3.53 V              ; -0.0306 V           ; 0.247 V                              ; 0.251 V                              ; 6.54e-10 s                  ; 6.68e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 8.93e-07 V                  ; 3.53 V             ; -0.0306 V          ; 0.247 V                             ; 0.251 V                             ; 6.54e-10 s                 ; 6.68e-10 s                 ; No                        ; Yes                       ;
+; PMODA_IO[1]      ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.46 V                       ; 8.93e-07 V                   ; 3.53 V              ; -0.0306 V           ; 0.247 V                              ; 0.252 V                              ; 6.55e-10 s                  ; 6.68e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 8.93e-07 V                  ; 3.53 V             ; -0.0306 V          ; 0.247 V                             ; 0.252 V                             ; 6.55e-10 s                 ; 6.68e-10 s                 ; No                        ; Yes                       ;
+; ENET_MDC         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET0_RESET_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.77 V              ; -0.0486 V           ; 0.285 V                              ; 0.06 V                               ; 2.8e-10 s                   ; 3.04e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.77 V             ; -0.0486 V          ; 0.285 V                             ; 0.06 V                              ; 2.8e-10 s                  ; 3.04e-10 s                 ; No                        ; Yes                       ;
+; ENET0_GTX_CLK    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[0] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[1] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[2] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_DATA[3] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_EN      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET0_TX_ER      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET1_GTX_CLK    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET1_RESET_N    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[0] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[1] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[2] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_DATA[3] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET1_TX_EN      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.94e-08 V                   ; 2.78 V              ; -0.0444 V           ; 0.25 V                               ; 0.107 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.94e-08 V                  ; 2.78 V             ; -0.0444 V          ; 0.25 V                              ; 0.107 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ENET_MDIO        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 9.95e-08 V                   ; 2.78 V              ; -0.0452 V           ; 0.248 V                              ; 0.108 V                              ; 2.67e-10 s                  ; 2.75e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 9.95e-08 V                  ; 2.78 V             ; -0.0452 V          ; 0.248 V                             ; 0.108 V                             ; 2.67e-10 s                 ; 2.75e-10 s                 ; No                        ; Yes                       ;
+; ~ALTERA_TDO~     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 1.68e-07 V                   ; 2.73 V              ; -0.0395 V           ; 0.361 V                              ; 0.109 V                              ; 3.1e-10 s                   ; 4.41e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 1.68e-07 V                  ; 2.73 V             ; -0.0395 V          ; 0.361 V                             ; 0.109 V                             ; 3.1e-10 s                  ; 4.41e-10 s                 ; No                        ; Yes                       ;
++------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Setup Transfers                                                             ;
++----------------+----------------+----------+----------+----------+----------+
+; From Clock     ; To Clock       ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------+----------------+----------+----------+----------+----------+
+; CLOCK_50_MAX10 ; CLOCK_50_MAX10 ; 1343     ; 0        ; 0        ; 0        ;
+; ENET1_RX_CLK   ; ENET1_RX_CLK   ; 4254     ; 0        ; 0        ; 0        ;
++----------------+----------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------+
+; Hold Transfers                                                              ;
++----------------+----------------+----------+----------+----------+----------+
+; From Clock     ; To Clock       ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------+----------------+----------+----------+----------+----------+
+; CLOCK_50_MAX10 ; CLOCK_50_MAX10 ; 1343     ; 0        ; 0        ; 0        ;
+; ENET1_RX_CLK   ; ENET1_RX_CLK   ; 4254     ; 0        ; 0        ; 0        ;
++----------------+----------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 1     ; 1    ;
+; Unconstrained Clocks            ; 2     ; 2    ;
+; Unconstrained Input Ports       ; 11    ; 11   ;
+; Unconstrained Input Port Paths  ; 376   ; 376  ;
+; Unconstrained Output Ports      ; 14    ; 14   ;
+; Unconstrained Output Port Paths ; 82    ; 82   ;
++---------------------------------+-------+------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Status Summary                                                                                                                                          ;
++-----------------------------------------------------------------+-----------------------------------------------------------------+-----------+---------------+
+; Target                                                          ; Clock                                                           ; Type      ; Status        ;
++-----------------------------------------------------------------+-----------------------------------------------------------------+-----------+---------------+
+; CLOCK_25_MAX10                                                  ;                                                                 ; Base      ; Unconstrained ;
+; CLOCK_50_MAX10                                                  ; CLOCK_50_MAX10                                                  ; Base      ; Constrained   ;
+; ENET0_RX_CLK                                                    ; ENET0_RX_CLK                                                    ; Base      ; Constrained   ;
+; ENET0_TX_CLK                                                    ;                                                                 ; Base      ; Unconstrained ;
+; ENET1_RX_CLK                                                    ; ENET1_RX_CLK                                                    ; Base      ; Constrained   ;
+; delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] ; delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] ; Generated ; Illegal       ;
++-----------------------------------------------------------------+-----------------------------------------------------------------+-----------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                ;
++-------------------+--------------------------------------------------------------------------------------+
+; Input Port        ; Comment                                                                              ;
++-------------------+--------------------------------------------------------------------------------------+
+; ENET0_LED_LINK100 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_LED_LINK100 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DV       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET_MDIO         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_PB[0]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_PB[1]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_PB[3]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                               ;
++------------------+---------------------------------------------------------------------------------------+
+; Output Port      ; Comment                                                                               ;
++------------------+---------------------------------------------------------------------------------------+
+; ENET0_RESET_N    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_EN      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RESET_N    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET_MDC         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET_MDIO        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; PMODA_IO[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------------+---------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                ;
++-------------------+--------------------------------------------------------------------------------------+
+; Input Port        ; Comment                                                                              ;
++-------------------+--------------------------------------------------------------------------------------+
+; ENET0_LED_LINK100 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_LED_LINK100 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DATA[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RX_DV       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET_MDIO         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_PB[0]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_PB[1]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_PB[3]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                               ;
++------------------+---------------------------------------------------------------------------------------+
+; Output Port      ; Comment                                                                               ;
++------------------+---------------------------------------------------------------------------------------+
+; ENET0_RESET_N    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_DATA[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET0_TX_EN      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET1_RESET_N    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET_MDC         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ENET_MDIO        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; PMODA_IO[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; USER_LED[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------------+---------------------------------------------------------------------------------------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime TimeQuest Timing Analyzer
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+    Info: Processing started: Thu Jul 20 20:38:14 2017
+Info: Command: quartus_sta PHYctrl_Slave -c PHYctrl_Slave
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (332104): Reading SDC File: 'phy.sdc'
+Info (332110): Deriving PLL clocks
+    Info (332110): create_generated_clock -source {delay_measure_clock|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 13 -multiply_by 50 -phase 3.46 -duty_cycle 50.00 -name {delay_measure_clock|altpll_component|auto_generated|pll1|clk[0]} {delay_measure_clock|altpll_component|auto_generated|pll1|clk[0]}
+Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
+Warning (332087): The master clock for this clock assignment could not be derived.  Clock: delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] was not created.
+    Warning (332035): No clocks found on or feeding the specified source node: delay_measure_clock|altpll_component|auto_generated|pll1|inclk[0]
+Warning (332060): Node: CLOCK_25_MAX10 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register fb_slave_mac:fb_slave_mac_ins|SynchModule:SynchModule_ins|SynchDelayCnt[31] is being clocked by CLOCK_25_MAX10
+Warning (332060): Node: ENET0_TX_CLK was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register fb_slave_mac:fb_slave_mac_ins|MTxEn_sync2 is being clocked by ENET0_TX_CLK
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 38.461
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Info (332146): Worst-case setup slack is 15.386
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    15.386               0.000 CLOCK_50_MAX10 
+    Info (332119):    32.762               0.000 ENET1_RX_CLK 
+Info (332146): Worst-case hold slack is 0.324
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.324               0.000 ENET1_RX_CLK 
+    Info (332119):     0.326               0.000 CLOCK_50_MAX10 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 9.652
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.652               0.000 CLOCK_50_MAX10 
+    Info (332119):    19.486               0.000 ENET1_RX_CLK 
+    Info (332119):    36.000               0.000 ENET0_RX_CLK 
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Warning (334000): Timing characteristics of device 10M50DAF484C6GES are preliminary
+Info (334004): Delay annotation completed successfully
+Warning (332087): The master clock for this clock assignment could not be derived.  Clock: delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] was not created.
+    Warning (332035): No clocks found on or feeding the specified source node: delay_measure_clock|altpll_component|auto_generated|pll1|inclk[0]
+Warning (332060): Node: CLOCK_25_MAX10 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register fb_slave_mac:fb_slave_mac_ins|SynchModule:SynchModule_ins|SynchDelayCnt[31] is being clocked by CLOCK_25_MAX10
+Warning (332060): Node: ENET0_TX_CLK was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register fb_slave_mac:fb_slave_mac_ins|MTxEn_sync2 is being clocked by ENET0_TX_CLK
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 38.461
+Info (332146): Worst-case setup slack is 15.838
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    15.838               0.000 CLOCK_50_MAX10 
+    Info (332119):    33.388               0.000 ENET1_RX_CLK 
+Info (332146): Worst-case hold slack is 0.294
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.294               0.000 ENET1_RX_CLK 
+    Info (332119):     0.296               0.000 CLOCK_50_MAX10 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 9.666
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.666               0.000 CLOCK_50_MAX10 
+    Info (332119):    19.511               0.000 ENET1_RX_CLK 
+    Info (332119):    36.000               0.000 ENET0_RX_CLK 
+Info: Analyzing Fast 1200mV 0C Model
+Warning (332087): The master clock for this clock assignment could not be derived.  Clock: delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] was not created.
+    Warning (332035): No clocks found on or feeding the specified source node: delay_measure_clock|altpll_component|auto_generated|pll1|inclk[0]
+Warning (332060): Node: CLOCK_25_MAX10 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register fb_slave_mac:fb_slave_mac_ins|SynchModule:SynchModule_ins|SynchDelayCnt[31] is being clocked by CLOCK_25_MAX10
+Warning (332060): Node: ENET0_TX_CLK was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register fb_slave_mac:fb_slave_mac_ins|MTxEn_sync2 is being clocked by ENET0_TX_CLK
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: delay_measure_clock|altpll_component|auto_generated|pll1|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 38.461
+Info (332146): Worst-case setup slack is 17.757
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    17.757               0.000 CLOCK_50_MAX10 
+    Info (332119):    36.327               0.000 ENET1_RX_CLK 
+Info (332146): Worst-case hold slack is 0.148
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.148               0.000 ENET1_RX_CLK 
+    Info (332119):     0.150               0.000 CLOCK_50_MAX10 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 9.467
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.467               0.000 CLOCK_50_MAX10 
+    Info (332119):    19.455               0.000 ENET1_RX_CLK 
+    Info (332119):    36.000               0.000 ENET0_RX_CLK 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 885 megabytes
+    Info: Processing ended: Thu Jul 20 20:38:18 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+
