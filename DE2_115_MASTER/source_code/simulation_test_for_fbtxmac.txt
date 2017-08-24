@@ -1,0 +1,18 @@
+vsim -gui -l msim_transcript -do pyhctrl_run_msim_rtl_verilog.do work.fb_txmac
+force -freeze sim:/fb_txmac/Reset 1 0
+force -freeze sim:/fb_txmac/MTxClk 1 0, 0 {20 ns} -r 40
+run
+force -freeze sim:/fb_txmac/Reset 0 0
+force -freeze sim:/fb_txmac/CrcNibbleCnt 0010 0
+force -freeze sim:/fb_txmac/DataSoC 1 0
+force -freeze sim:/fb_txmac/SlaveDataNibbleCnt 00000100 0
+force -freeze sim:/fb_txmac/SoCNibbleCnt 0001 0
+force -freeze sim:/fb_txmac/TotalFrmNibbleCnt 00010000 0
+force -freeze sim:/fb_txmac/TxData 10100011 0
+force -freeze sim:/fb_txmac/TxStartFrm 0 0
+force -freeze sim:/fb_txmac/TxUnderRun 0 0
+run
+force -freeze sim:/fb_txmac/TxStartFrm 1 0
+run
+force -freeze sim:/fb_txmac/TxStartFrm 0 0
+run

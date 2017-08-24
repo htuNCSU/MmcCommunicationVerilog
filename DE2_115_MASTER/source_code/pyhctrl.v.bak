@@ -1,0 +1,236 @@
+`include "freedm_bus/fb_defines.v"
+
+module pyhctrl (
+   input         CLOCK_50,
+   
+   // KEY
+   input  [0: 0] KEY,
+   input  [17: 0] SW,
+   
+   output [17: 0] LEDR,
+   output [10: 0] GPIO,
+   output [8: 0] LEDG,
+   output [6:0]HEX7,HEX6,HEX5,HEX4,HEX3,HEX2,HEX1,HEX0,
+   // Ethernet 0
+   output        ENET0_MDC,
+   inout         ENET0_MDIO,
+   output        ENET0_RESET_N,
+   
+   output        ENET0_GTX_CLK,
+   input         ENET0_TX_CLK,
+   input         ENET0_RX_CLK,
+   input  [3: 0] ENET0_RX_DATA,
+   input         ENET0_RX_DV,
+   
+   output [3: 0] ENET0_TX_DATA,
+   output        ENET0_TX_EN,
+   output        ENET0_TX_ER,
+   // Ethernet 1
+   output        ENET1_GTX_CLK,
+   output        ENET1_MDC,
+   inout         ENET1_MDIO,
+   output        ENET1_RESET_N,
+   
+   input         ENET1_TX_CLK,
+   input         ENET1_RX_CLK,
+   input  [3: 0] ENET1_RX_DATA,
+   input         ENET1_RX_DV,
+   
+   output [3: 0] ENET1_TX_DATA,
+   output        ENET1_TX_EN
+);
+
+   assign ENET0_RESET_N = 1'b1;
+   assign ENET1_RESET_N = 1'b1;
+
+   
+   assign GPIO[0] = ENET0_TX_CLK;
+   assign GPIO[1] = ENET0_TX_DATA[0];
+   assign GPIO[2] = ENET0_TX_EN;
+   
+   assign ENET1_TX_EN = SW[9];
+   
+   wire clk_tx0_25;
+   wire clk_tx1_25;
+   wire clk_rx0_25;
+   wire clk_rx1_25;
+   assign clk_tx0_25 = ENET0_TX_CLK;
+   assign clk_tx1_25 = ENET1_TX_CLK;
+   assign clk_rx0_25 = ENET0_RX_CLK;
+   assign clk_rx1_25 = ENET1_RX_CLK;
+   
+//   generation of start transmitting signal  
+   reg [31:0]TxCnt;
+   wire TxStartFrm;
+   assign TxStartFrm = & TxCnt[24:0];
+   
+   always @ (posedge  clk_tx0_25)
+   begin 
+      if (SW[0]) begin
+               TxCnt <= 31'b0;
+         end else if (TxStartFrm )begin
+               TxCnt <= 31'b0;
+         end
+         else
+               TxCnt <= TxCnt + 1'b1;
+   end
+
+ 
+///////////////////////////////////////   transmitter mac  /////////////////////////////
+ 
+   fb_txmac fb_txmac_ins(
+   
+      .MTxClk(clk_tx0_25), 
+      .Reset(SW[8]), 
+      
+      .TxStartFrm(TxStartFrm),
+      .TxUnderRun(1'b0), 
+      .DataSoC(1'b1),
+      .TxData(SW[17:10]), 
+      
+      .SlaveDataNibbleCnt(`SLAVE_DATA_NIB_CNT), 
+      .SoCNibbleCnt(`SOC_NIB_CNT),
+      .CrcNibbleCnt(`CRC_NIB_CNT),
+      .TotalNibFrameCnt(`TOTAL_FRAME_NIB_CNT),
+      
+      .MTxD(ENET0_TX_DATA),
+      .MTxEn(ENET0_TX_EN), 
+      .MTxErr(ENET0_TX_ER), 
+      .TxDone(LEDR[1]), 
+      .TxUsedData(LEDR[2]), 
+      .WillTransmit(LEDR[3]),
+      .StartTxDone(LEDR[4]), 
+      .StateSoC(LEDR[5]), 
+      .StateData(LEDR[7:6]),
+      .StateIdle(LEDR[8]),
+      .StatePreamble(LEDR[9]),
+      .StateCrc(LEDR[10])
+     );
+     
+     
+     
+////////////////////////////////////       receiver mac              /////////////////////////////
+
+
+   reg [5:0]rx_ram_addr1;
+   always @ (posedge clk_rx1_25 )
+   begin
+         if (SW[8]) begin
+               rx_ram_addr1 <= 6'b0;
+         end else if (ENET1_RX_DV)begin
+               if (rx_ram_addr1 < 6'b111110 )
+                   rx_ram_addr1 <= rx_ram_addr1 + 1'b1; 
+         end
+   end
+   
+   wire [3:0]readFromRxRam;
+   rx_data_ram rx_data_ram_ins(
+   
+      .data_a(ENET1_RX_DATA), 
+      //.data_b,
+      .addr_a(rx_ram_addr1),
+      .addr_b(SW[7:2]),
+      .we_a(ENET1_RX_DV), 
+      .we_b(1'b0),
+      .clk(clk_rx1_25),
+      //.q_a, 
+      .q_b(readFromRxRam)
+   );
+   
+   LEDnumb LED4(HEX4, readFromRxRam[3:0]);
+   
+//////////////////////////////////         MI INTERFACE FOR PORT 0 ///////////////////////////////
+   wire [31:0] command0;
+   wire [15:0] command_and0;
+   wire [3: 0] comm_addr0;
+   wire [15:0] readData0;
+   wire [15:0] readDataRam0;
+   phyInital phyInital_ins0 (
+   
+      .clk(CLOCK_50),
+      .reset(SW[0]),
+      .mdc(ENET0_MDC),
+      .md_inout(ENET0_MDIO),
+      .command(command0),
+      .command_and(command_and0),
+      
+      .comm_addr(comm_addr0),
+      .ram_read_addr(SW[5:2]),
+      .iniStart(1'b1),
+      .iniEnd(LEDG[0]),
+    //.stateout(LEDR[12:0]),
+      .readDataoutRam(readDataRam0),
+      .busy(LEDG[8]),
+      .WCtrlDataStartout(LEDG[7])
+      );
+   
+   phyIniCommand0 pyhIniCommands (
+      .clk(CLOCK_50),
+      .q(command0),
+      .addr(comm_addr0)
+      );
+   phyIniCommand0_and pyhIniCommands_and (
+      .clk(CLOCK_50),
+      .q(command_and0),
+      .addr(comm_addr0)
+      );
+      
+//////////////////////////////////////////////////////  MI INTERFACE FOR PORT 1 ///////////////////////////////
+   wire [31:0] command1;
+   wire [15:0] command_and1;
+   wire [3: 0] comm_addr1;
+   wire [15:0] readData1;
+   wire [15:0] readDataRam1;
+   phyInital phyInital_ins1 (
+   
+      .clk(CLOCK_50),
+      .reset(SW[0]),
+      .mdc(ENET1_MDC),
+      .md_inout(ENET1_MDIO),
+      .command(command1),
+      .command_and(command_and1),
+      
+      .comm_addr(comm_addr1),
+      .ram_read_addr(SW[5:2]),
+      .iniStart(1'b1),
+      .iniEnd(LEDG[1]),
+     //.stateout(LEDR[12:0]),
+      .readDataoutRam(readDataRam1),
+      .busy(LEDG[6]),
+      .WCtrlDataStartout(LEDG[5])
+      );
+   
+   phyIniCommand1 pyhIniCommands1 (
+      .clk(CLOCK_50),
+      .q(command1),
+      .addr(comm_addr1)
+      );
+   phyIniCommand1_and pyhIniCommands_and1 (
+      .clk(CLOCK_50),
+      .q(command_and1),
+      .addr(comm_addr1)
+      );
+      
+///////////////////////////////////////////////////end of MI INTERFACE FOR PORT 1 ///////////////////////////////
+      wire readDataRamSelect = SW[1];
+      wire [15:0] readDataRam;
+      assign readDataRam = readDataRamSelect?readDataRam1:readDataRam0;
+      
+      LEDnumb LED0(HEX0, readDataRam[3:0]);
+      LEDnumb LED1(HEX1, readDataRam[7:4]);
+      LEDnumb LED2(HEX2, readDataRam[11:8]);
+      LEDnumb LED3(HEX3, readDataRam[15:12]);
+     
+
+      LEDnumb LED5(HEX5, readDataRam[7:4]);
+      LEDnumb LED6(HEX6, readDataRam[11:8]);
+      LEDnumb LED7(HEX7, readDataRam[15:12]);
+      
+      
+endmodule 
+
+
+
+  
+  
+  

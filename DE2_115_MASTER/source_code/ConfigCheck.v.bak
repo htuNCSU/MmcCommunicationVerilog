@@ -1,0 +1,8 @@
+module ConfigCheck (
+
+
+);
+
+input LastSlaveIDPlus1;
+input AveSlaveDelay;
+

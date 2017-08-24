@@ -1,0 +1,32 @@
+vsim -gui -l msim_transcript -do pyhctrl_run_msim_rtl_verilog.do work.fb_rxmac
+
+change time to 40 ns
+
+force -freeze sim:/fb_rxmac/Reset 1 0
+force -freeze sim:/fb_rxmac/MRxClk 1 0, 0 {20 ns} -r 40
+run
+force -freeze sim:/fb_rxmac/MRxDV 0 0
+force -freeze sim:/fb_rxmac/Reset 0 0
+run
+run
+force -freeze sim:/fb_rxmac/MRxD 0101 0
+force -freeze sim:/fb_rxmac/MRxDV 1 0
+run
+run
+run
+force -freeze sim:/fb_rxmac/MRxD 0100 0
+run
+force -freeze sim:/fb_rxmac/MRxD 0010 0
+run
+force -freeze sim:/fb_rxmac/MRxD 0000 0
+run
+force -freeze sim:/fb_rxmac/MRxD 0011 0
+run
+force -freeze sim:/fb_rxmac/MRxD 0110 0
+run
+force -freeze sim:/fb_rxmac/MRxDV 0 0
+force -freeze sim:/fb_rxmac/MRxD 0000 0
+run
+run
+run
+run

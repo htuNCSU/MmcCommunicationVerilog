@@ -1,0 +1,7 @@
+module division_factor(div, mul, shift);
+
+input div;
+
+output [15:0] mul;
+output [8:0]  shift;
+

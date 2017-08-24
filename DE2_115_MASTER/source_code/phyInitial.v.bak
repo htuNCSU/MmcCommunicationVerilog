@@ -1,0 +1,144 @@
+module phyInital (
+      
+      input clk,reset,
+      input iniStart,
+      output iniEnd,
+      output mdc,
+      output md_inout);
+      
+      
+      reg [3:0]comm_addr;
+      wire [31:0]command;
+      reg we;
+      wire [15:0] writeData;
+      wire writeOp;
+      wire [4:0] pyhAddr;
+      wire [4:0] regAddr;
+      
+      assign writeOp = command[31];
+      assign pyhAddr = command[30:26];
+      assign regAddr = command[25:21];
+      assign writeData = command[15:0];
+      
+      wire [15:0]readData;
+      
+      wire [15: 0] ctrlData
+      assign ctrlData =  readData | writeData;
+      
+      wire Busy;
+      reg WCtrlData,RStat;
+      
+      wire WCtrlDataStart, RStatStart;
+      
+      wire md_we, md_out,md_in;
+      assign md_inout = md_we? md_out:1'bz;
+      assign md_inout = md_we? md_out:1'bz;
+      assign md_in = md_inout;
+      
+      pyhIniCommand pyhIniCommands (
+            
+            .clk(clk),
+            .q(command),
+            .addr(comm_addr),
+            //.data(dataRead),
+            .we(we)
+            
+            );
+       
+       eth_miim eth_miim_ins (
+
+      .Clk(clk),
+      .Reset(reset),
+      .Divider(50),
+      .NoPre(1'b0),
+      .CtrlData(ctrlData),
+      .Rgad(regAddr),
+      .Fiad(pyhAddr),
+      .WCtrlData(WCtrlData),
+      .RStat(RStat),
+      .ScanStat(1'b0),
+   
+      .Mdi(md_in),
+      .Mdo(md_out),
+      .MdoEn(md_we),
+      .Mdc(mdc),
+   
+      .Busy(Busy),
+      .Prsd(readData),
+      //.LinkFail(LEDG[1]),
+      //.Nvalid(LEDG[2]),
+      .WCtrlDataStart(WCtrlDataStart),
+      .RStatStart(RStatStart]),
+      .UpdateMIIRX_DATAReg(UpdateMIIRX_DATAReg)
+   
+   WW);
+  
+  
+      always @ (posedge clk)
+      begin
+      
+            if (reset) begin 
+                  WCtrlData <= 1'b0;
+                  RStat <= 1'b0
+            end
+              
+            else if (UpdateMIIRX_DATAReg) begin 
+                     WCtrlData <= 1'b1;
+                        RStat <= 1'b0;
+            end
+                        
+            else  begin
+                  if ( |command & ~Busy) begin
+                        WCtrlData <= 1'b1;
+                        RStat <= 1'b0;
+                  end
+            end
+      end
+      
+      always @ (posedge clk)
+      begin
+      
+            if (reset) begin 
+                  WCtrlData <= 1'b0;
+            end
+              
+            else begin 
+                  if (WCtrlDataStart) WCtrlData  <= 1'b0;
+            end
+      end
+      
+      
+      always @ (posedge clk)
+      begin
+      
+            if (reset) begin 
+                  RStat <= 1'b0;
+            end
+              
+            else begin 
+                  if (RStatStart) RStat  <= 1'b0;
+            end
+      end
+                 
+      always @ (posedge clk)
+      begin
+      
+            if (reset) begin 
+                  comm_addr <= 5'b0;
+            end
+            
+            else begin 
+                  if (readData == CtrlData) comm_addr <= comm_addr + 1;
+            end
+      end
+      
+endmodule
+      
+      
+      
+      
+      
+      
+      
+      
+      

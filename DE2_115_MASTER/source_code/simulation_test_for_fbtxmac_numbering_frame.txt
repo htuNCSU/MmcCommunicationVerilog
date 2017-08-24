@@ -1,0 +1,33 @@
+vsim -gui -l msim_transcript -do pyhctrl_run_msim_rtl_verilog.do work.fb_txmac
+
+change time to 40 ns
+
+
+force -freeze sim:/fb_txmac/Reset 1 0
+force -freeze sim:/fb_txmac/MTxClk 1 0, 0 {20 ns} -r 40
+run
+force -freeze sim:/fb_txmac/Reset 0 0
+force -freeze sim:/fb_txmac/DataSoC 0 0
+force -freeze sim:/fb_txmac/NumbSoC 0 0
+force -freeze sim:/fb_txmac/DistSoC 0 0
+force -freeze sim:/fb_txmac/DelaySoC 0 0
+force -freeze sim:/fb_txmac/LastSlaveIDPlus1 8'd2 0
+force -freeze sim:/fb_txmac/TxData 10100011 0
+force -freeze sim:/fb_txmac/TxStartFrm 0 0
+force -freeze sim:/fb_txmac/TxUnderRun 0 0
+run
+force -freeze sim:/fb_txmac/TxStartFrm 1 0
+force -freeze sim:/fb_txmac/DataSoC 0 0
+force -freeze sim:/fb_txmac/NumbSoC 0 0
+force -freeze sim:/fb_txmac/DistSoC 0 0
+force -freeze sim:/fb_txmac/DelaySoC 1 0
+run
+force -freeze sim:/fb_txmac/TxStartFrm 0 0
+force -freeze sim:/fb_txmac/DataSoC 0 0
+force -freeze sim:/fb_txmac/NumbSoC 0 0
+force -freeze sim:/fb_txmac/DistSoC 0 0
+run
+run
+run
+run
+run
